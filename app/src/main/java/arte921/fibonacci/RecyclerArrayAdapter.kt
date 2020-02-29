@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.listitemlayout.view.*
-import java.lang.Math.random
+
 
 class RecyclerArrayAdapter(private val inputData: MutableList<String>) : RecyclerView.Adapter<RecyclerArrayAdapter.MainViewHolder>() {
 
@@ -17,8 +17,12 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.view.fibonacci.text = "$position | ${inputData[position]} \n"
-        //holder.view.random.text = random().toString()
 
+        binded++
+
+
+/*
+        holder.view.random.text = random().toString()
         holder.view.rollButton.setOnClickListener(fun (_){
             holder.view.random.text = random().toString()
             inputData[position] = "pop!"
@@ -33,7 +37,7 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
         holder.view.deletButton.setOnClickListener((fun(_){
             inputData.removeAt(position)
             this.notifyItemRemoved(position)
-        }))
+        }))*/
 
     }
 }

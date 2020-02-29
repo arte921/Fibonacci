@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Math.abs
 import java.math.BigInteger
 
-val cacheAmount: Int = 100
+const val cacheAmount: Int = 10
+
+var binded: Int = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun calcFibonacci(amount: Int){
-            for(i in 1..amount){
+        fun calcFibonacci(amount: Int) {
+            for (i in 1..amount) {
                 f = v + t
                 fibonacci.add(f.toString())
                 t = v
@@ -29,20 +32,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        calcFibonacci(1000)
+        calcFibonacci(100)
 
         var viewManager = LinearLayoutManager(this)
 
-        rva.apply{
+        rva.apply {
             layoutManager = viewManager
             adapter = RecyclerArrayAdapter(fibonacci)
         }
 
         rva.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN) && dy > 0) {
+                if (dy > 0 && fibonacci.size - binded < 100) {
                     calcFibonacci(cacheAmount)
-                    rva.adapter?.notifyItemRangeInserted(fibonacci.size,cacheAmount)
+                    rva.adapter?.notifyItemRangeInserted(fibonacci.size, cacheAmount)
                 }
             }
         })
