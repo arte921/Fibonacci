@@ -32,7 +32,7 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
             this.notifyItemInserted(position)
         }))
 
-        holder.view.deletButton.setOnClickListener((fun(_){
+        holder.view.deleteButton.setOnClickListener((fun(_){
             inputData.removeAt(position)
             this.notifyItemRemoved(position)
         }))*/
