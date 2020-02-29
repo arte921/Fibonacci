@@ -1,11 +1,11 @@
 package arte921.fibonacci
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
-import java.math.BigInteger
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +31,18 @@ class MainActivity : AppCompatActivity() {
             layoutManager = viewManager
             adapter = RecyclerArrayAdapter(fibonacci)
         }
+
+        rva.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN) && dy > 0) {
+                    for(i in 1..5){
+                        fibonacci.add(dy.toString())
+                        rva.adapter?.notifyItemInserted(fibonacci.size)
+                    }
+                    fibonacci.add(dy.toString())
+                    rva.adapter?.notifyItemInserted(fibonacci.size)
+                }
+            }
+        })
     }
 }

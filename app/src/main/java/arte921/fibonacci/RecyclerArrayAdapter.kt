@@ -11,20 +11,29 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
 
     class MainViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val textView = LayoutInflater.from(parent.context).inflate(R.layout.listitemlayout,parent,false)
-        return MainViewHolder(textView)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder = MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.listitemlayout,parent,false))
+
+    override fun getItemCount(): Int = inputData.size
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.view.fibonacci.text = inputData[position]
         holder.view.random.text = random().toString()
-        holder.view.rollButton.setOnClickListener(fun (_: View){
+
+        holder.view.rollButton.setOnClickListener(fun (_){
             holder.view.random.text = random().toString()
+            inputData[position] = "pop!"
+            this.notifyItemChanged(position)
         })
+
+        holder.view.addButton.setOnClickListener((fun(_){
+            inputData.add(position,"inserted")
+            this.notifyItemInserted(position)
+        }))
+
+        holder.view.deletButton.setOnClickListener((fun(_){
+            inputData.removeAt(position)
+            this.notifyItemRemoved(position)
+        }))
+
     }
-
-    override fun getItemCount(): Int = inputData.size
-
-
 }
