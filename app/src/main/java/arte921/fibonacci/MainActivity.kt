@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Math.abs
 import java.math.BigInteger
 
 const val cacheAmount: Int = 10
@@ -14,7 +13,8 @@ var binded: Int = 0
 
 class MainActivity : AppCompatActivity() {
 
-    var fibonacci = mutableListOf<String>()
+    var fibonacci = mutableListOf("0","1")
+
     var f: BigInteger = 0.toBigInteger()
     var v: BigInteger = 1.toBigInteger()
     var t: BigInteger = 0.toBigInteger()

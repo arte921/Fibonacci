@@ -17,9 +17,7 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.view.fibonacci.text = "$position | ${inputData[position]} \n"
-
         binded++
-
 
 /*
         holder.view.random.text = random().toString()
