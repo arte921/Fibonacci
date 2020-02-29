@@ -16,8 +16,8 @@ class RecyclerArrayAdapter(private val inputData: MutableList<String>) : Recycle
     override fun getItemCount(): Int = inputData.size
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.view.fibonacci.text = inputData[position]
-        holder.view.random.text = random().toString()
+        holder.view.fibonacci.text = "$position | ${inputData[position]} \n"
+        //holder.view.random.text = random().toString()
 
         holder.view.rollButton.setOnClickListener(fun (_){
             holder.view.random.text = random().toString()
