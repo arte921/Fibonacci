@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for(i in 0..5000){
+        for(i in 0..50){
             f = v + t
             fibonacci.add(f.toString())
             t = v
