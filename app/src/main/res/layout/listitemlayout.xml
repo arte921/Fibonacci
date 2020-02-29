@@ -9,6 +9,7 @@
         android:id="@+id/fibonacci"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textIsSelectable="true"
         app:layout_constraintEnd_toStartOf="@+id/addButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
